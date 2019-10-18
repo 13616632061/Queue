@@ -1,0 +1,45 @@
+package com.yzx.lib.weight;
+
+/**
+ * Created by Administrator on 2019/10/14.
+ */
+
+import android.app.Dialog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.yzx.lib.R;
+
+/**
+        * TODO 加载动画
+        */
+public  class Loading extends Dialog {
+    private final RotateAnimation refreshingAnimation;
+
+
+    public  Loading(Context context) {
+        super(context, R.style.Loading);
+        // 加载布局
+        setContentView(R.layout.dialog_loading_layout);
+        // 设置Dialog参数
+        Window window = getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.gravity = Gravity.CENTER;
+        window.setAttributes(params);
+        ImageView iv_center = (ImageView) findViewById(R.id.iv_center);
+        refreshingAnimation = (RotateAnimation) AnimationUtils.loadAnimation(
+                context, R.anim.rotating);
+        refreshingAnimation.setInterpolator(new LinearInterpolator());
+        iv_center.startAnimation(refreshingAnimation);
+    }
+}
+

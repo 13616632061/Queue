@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@color/color_E24335">
+    <ImageView
+        android:id="@+id/iv_menu"
+        android:src="@mipmap/menu"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:layout_width="24dp"
+        android:layout_height="30dp" />
+    <TextView
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:text="@string/queue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
