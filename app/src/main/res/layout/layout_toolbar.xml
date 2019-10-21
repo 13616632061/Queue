@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.yzx.lib.weight.TopBarLayout
+        android:id="@+id/top_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/color_FF4500"
+        app:leftText="@string/back"
+        app:leftTextColor="@color/white"
+        app:leftTextSize="16sp"
+        app:rightTextColor="@color/white"
+        app:rightTextSize="16sp"
+        app:titleTextColor="@color/white"
+        app:titleTextSize="16sp"></com.yzx.lib.weight.TopBarLayout>
+</RelativeLayout>
