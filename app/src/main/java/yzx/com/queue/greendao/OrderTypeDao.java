@@ -28,6 +28,8 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         public final static Property TypeName = new Property(1, String.class, "typeName", false, "TYPE_NAME");
         public final static Property MinNum = new Property(2, Integer.class, "minNum", false, "MIN_NUM");
         public final static Property MaxNum = new Property(3, Integer.class, "maxNum", false, "MAX_NUM");
+        public final static Property IsSelect = new Property(4, Boolean.class, "isSelect", false, "IS_SELECT");
+        public final static Property OrderNum = new Property(5, Integer.class, "orderNum", false, "ORDER_NUM");
     }
 
 
@@ -46,7 +48,9 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"TYPE_NAME\" TEXT," + // 1: typeName
                 "\"MIN_NUM\" INTEGER," + // 2: minNum
-                "\"MAX_NUM\" INTEGER);"); // 3: maxNum
+                "\"MAX_NUM\" INTEGER," + // 3: maxNum
+                "\"IS_SELECT\" INTEGER," + // 4: isSelect
+                "\"ORDER_NUM\" INTEGER);"); // 5: orderNum
     }
 
     /** Drops the underlying database table. */
@@ -78,6 +82,16 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         if (maxNum != null) {
             stmt.bindLong(4, maxNum);
         }
+ 
+        Boolean isSelect = entity.getIsSelect();
+        if (isSelect != null) {
+            stmt.bindLong(5, isSelect ? 1L: 0L);
+        }
+ 
+        Integer orderNum = entity.getOrderNum();
+        if (orderNum != null) {
+            stmt.bindLong(6, orderNum);
+        }
     }
 
     @Override
@@ -103,6 +117,16 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         if (maxNum != null) {
             stmt.bindLong(4, maxNum);
         }
+ 
+        Boolean isSelect = entity.getIsSelect();
+        if (isSelect != null) {
+            stmt.bindLong(5, isSelect ? 1L: 0L);
+        }
+ 
+        Integer orderNum = entity.getOrderNum();
+        if (orderNum != null) {
+            stmt.bindLong(6, orderNum);
+        }
     }
 
     @Override
@@ -116,7 +140,9 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // typeName
             cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // minNum
-            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3) // maxNum
+            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // maxNum
+            cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0, // isSelect
+            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5) // orderNum
         );
         return entity;
     }
@@ -127,6 +153,8 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         entity.setTypeName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setMinNum(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
         entity.setMaxNum(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
+        entity.setIsSelect(cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0);
+        entity.setOrderNum(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
      }
     
     @Override

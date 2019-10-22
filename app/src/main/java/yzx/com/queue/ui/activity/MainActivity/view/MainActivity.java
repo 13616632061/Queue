@@ -3,6 +3,7 @@ package yzx.com.queue.ui.activity.MainActivity.view;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
@@ -19,7 +20,9 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import yzx.com.queue.R;
 import yzx.com.queue.constant.RouteMap;
+import yzx.com.queue.greendao.GreenDaoHelp;
 import yzx.com.queue.ui.activity.MainActivity.presenter.MainActivityPresenter;
+import yzx.com.queue.ui.adapter.MainOrderTypeAdapter;
 import yzx.com.queue.ui.popuWindow.MainMenuPopWindow;
 import yzx.com.queue.view.TakeNumberView;
 
@@ -49,7 +52,10 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
 
     @Override
     protected void initView() {
+        GreenDaoHelp.getInstance(this);
         mPresenter = new MainActivityPresenter(this);
+        mPresenter.initMainOrderTypeAdapter();
+        mPresenter.getOrderType();
 
     }
 
@@ -71,6 +77,17 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     public void showMainMenuPopWindow() {
         MainMenuPopWindow menuPopWindow = MainMenuPopWindow.getInstance(this);
         menuPopWindow.showAsDropDown(layoutTitle, 0, 0, Gravity.NO_GRAVITY);
+    }
+
+    /**
+     * 初始化订单分类
+     */
+    @Override
+    public MainOrderTypeAdapter initMainOrderTypeAdapter() {
+        MainOrderTypeAdapter adapter = new MainOrderTypeAdapter(this,R.layout.item_main_order_type, mPresenter.getTypeData());
+        tabLayout.setAdapter(adapter);
+        tabLayout.setLayoutManager(new LinearLayoutManager(this));
+        return adapter;
     }
 
 

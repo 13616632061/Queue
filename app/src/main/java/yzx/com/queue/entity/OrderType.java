@@ -14,14 +14,19 @@ public class OrderType {
     @Id(autoincrement = true)
     private Long id;
     private String typeName;
-    private Integer minNum;
-    private Integer maxNum;
-    @Generated(hash = 141690519)
-    public OrderType(Long id, String typeName, Integer minNum, Integer maxNum) {
+    private Integer minNum=0;
+    private Integer maxNum=0;
+    private Boolean isSelect=false;
+    private Integer orderNum=0;
+    @Generated(hash = 726084985)
+    public OrderType(Long id, String typeName, Integer minNum, Integer maxNum,
+            Boolean isSelect, Integer orderNum) {
         this.id = id;
         this.typeName = typeName;
         this.minNum = minNum;
         this.maxNum = maxNum;
+        this.isSelect = isSelect;
+        this.orderNum = orderNum;
     }
     @Generated(hash = 40568524)
     public OrderType() {
@@ -50,4 +55,19 @@ public class OrderType {
     public void setMaxNum(Integer maxNum) {
         this.maxNum = maxNum;
     }
+    public Boolean getIsSelect() {
+        return this.isSelect;
+    }
+    public void setIsSelect(Boolean isSelect) {
+        this.isSelect = isSelect;
+    }
+    public Integer getOrderNum() {
+        return this.orderNum;
+    }
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+    }
+   
+
+   
 }

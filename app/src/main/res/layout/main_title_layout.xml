@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:id="@+id/layout_title"
-    android:background="@color/color_E24335">
+    android:background="@color/color_FF4500">
     <ImageView
         android:id="@+id/iv_menu"
         android:src="@mipmap/menu"
