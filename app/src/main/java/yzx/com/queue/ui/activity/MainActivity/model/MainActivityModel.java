@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yzx.com.queue.R;
+import yzx.com.queue.entity.OrderInfo;
 import yzx.com.queue.entity.OrderType;
 import yzx.com.queue.greendao.GreenDaoHelp;
+import yzx.com.queue.greendao.OrderInfoDao;
 
 /**
  * Created by Administrator on 2019/10/22.
@@ -30,5 +32,23 @@ public class MainActivityModel implements IMainActivityModelImp {
         typeList.add(orderType);
         typeList.addAll(GreenDaoHelp.getDaoSession().getOrderTypeDao().queryBuilder().list());
         return typeList;
+    }
+
+    /**
+     * 取号
+     * @param orderInfo
+     */
+    @Override
+    public void doTakeNumber(OrderInfo orderInfo) {
+        GreenDaoHelp.getDaoSession().getOrderInfoDao().insert(orderInfo);
+    }
+
+    /**
+     * 获取排队订单信息
+     * @param personNum
+     */
+    @Override
+    public void getQueueOrderInfo(int personNum) {
+        GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.PersonNum.eq(personNum));
     }
 }

@@ -67,7 +67,17 @@ public class OrderType {
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
     }
-   
 
-   
+
+    @Override
+    public String toString() {
+        return "OrderType{" +
+                "id=" + id +
+                ", typeName='" + typeName + '\'' +
+                ", minNum=" + minNum +
+                ", maxNum=" + maxNum +
+                ", isSelect=" + isSelect +
+                ", orderNum=" + orderNum +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package yzx.com.queue.ui.activity.OrderType.view;
 
+import yzx.com.queue.entity.OrderType;
 import yzx.com.queue.ui.adapter.OrderTypeAdapter;
 
 /**
@@ -19,6 +20,9 @@ public interface IOrderTypeAvtivityView {
     void deteleOrderType();
 
     //显示分类操作窗口
-    void showOrderTypePopWindow();
+    void showOrderTypePopWindow(OrderType orderType);
+
+    //显示提示信息
+    void showMsg(int type);
 
 }

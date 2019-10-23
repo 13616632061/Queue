@@ -43,6 +43,6 @@ public class OrderTypeAdapter extends BaseQuickAdapter<OrderType, BaseViewHolder
         helper.setText(R.id.tv_name,item.getTypeName());
 
         helper.addOnClickListener(R.id.tv_edit);
-        helper.addOnClickListener(R.id.iv_select);
+        helper.addOnClickListener(R.id.layout_item);
     }
 }

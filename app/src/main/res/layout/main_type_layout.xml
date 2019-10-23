@@ -4,16 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="48dp">
 
-    <com.nshmura.recyclertablayout.RecyclerTabLayout
-        android:id="@+id/tab_layout"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/tab_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/line"
-        android:background="@color/white"
-        app:rtl_scrollEnabled="true"
-        app:rtl_tabIndicatorHeight="0dp"
-        app:rtl_tabSelectedTextColor="@color/color_FF4500"></com.nshmura.recyclertablayout.RecyclerTabLayout>
+        android:layout_toLeftOf="@+id/line"></android.support.v7.widget.RecyclerView>
 
     <View
         android:id="@+id/line"

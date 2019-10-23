@@ -10,4 +10,7 @@ public interface IOrderTypePopWindowImp {
 
     //添加分类
     void addType(OrderType orderType);
+
+    //更新分类
+    void updateType(OrderType orderType);
 }

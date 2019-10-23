@@ -14,4 +14,7 @@ public interface IOrderTypeAvtivityModelImp {
 
     //获取订单分类
     List<OrderType> getOrderType();
+
+    //删除分类
+    void deteleOrderType(OrderType orderType);
 }

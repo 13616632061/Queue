@@ -13,4 +13,10 @@ public interface IMainActivityView {
 
     //初始化订单分类
     MainOrderTypeAdapter initMainOrderTypeAdapter();
+
+    //取号
+    void doTakeNumber();
+
+    //显示提示信息
+    void showMsg(int type);
 }

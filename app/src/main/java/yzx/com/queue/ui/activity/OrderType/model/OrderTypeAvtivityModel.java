@@ -2,6 +2,8 @@ package yzx.com.queue.ui.activity.OrderType.model;
 
 import android.content.Context;
 
+import com.apkfuns.logutils.LogUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,5 +26,14 @@ public class OrderTypeAvtivityModel implements IOrderTypeAvtivityModelImp{
         List<OrderType> typeList = new ArrayList<>();
         typeList.addAll(GreenDaoHelp.getDaoSession().getOrderTypeDao().queryBuilder().list());
         return typeList;
+    }
+
+    /**
+     * 删除分类
+     * @param orderType
+     */
+    @Override
+    public void deteleOrderType(OrderType orderType) {
+        GreenDaoHelp.getDaoSession().getOrderTypeDao().delete(orderType);
     }
 }

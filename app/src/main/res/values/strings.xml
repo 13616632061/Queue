@@ -24,4 +24,7 @@
     <string name="empty_type_name">分类为空</string>
     <string name="empty_type_num">人数范围为空</string>
     <string name="min_greater_max">最大就餐人数大于最小就餐人数，请重新输入</string>
+    <string name="delete_success">删除成功</string>
+    <string name="please_select_delete_type">请选择要删除的分类</string>
+    <string name="take_num_success">取号成功</string>
 </resources>

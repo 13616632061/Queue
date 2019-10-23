@@ -16,4 +16,13 @@ public class OrderTypePopWindowModel implements IOrderTypePopWindowImp {
     public void addType(OrderType orderType) {
         GreenDaoHelp.getDaoSession().getOrderTypeDao().insert(orderType);
     }
+
+    /**
+     * 更新分类
+     * @param orderType
+     */
+    @Override
+    public void updateType(OrderType orderType) {
+        GreenDaoHelp.getDaoSession().getOrderTypeDao().update(orderType);
+    }
 }

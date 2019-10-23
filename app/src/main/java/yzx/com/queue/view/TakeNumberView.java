@@ -255,11 +255,11 @@ public class TakeNumberView extends FrameLayout {
         }
     }
 
-    private interface takeNumber {
+    public interface takeNumber {
         void takeNumber(String num, String phone);
     }
 
-    private void setTakeNumber(takeNumber takeNumber) {
+    public void setTakeNumber(takeNumber takeNumber) {
         this.takeNumber = takeNumber;
     }
 

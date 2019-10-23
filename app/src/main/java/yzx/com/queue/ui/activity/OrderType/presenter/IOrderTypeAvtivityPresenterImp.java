@@ -20,11 +20,17 @@ public interface IOrderTypeAvtivityPresenterImp {
     List<OrderType> getData();
 
     //显示分类操作窗口
-    void showOrderTypePopWindow();
+    void showOrderTypePopWindow(OrderType orderType);
 
     //新增分类
     void addOrderType();
 
     //删除分类
     void deteleOrderType();
+
+    //编辑分类
+    void editOrderType(int position);
+
+    //设置选中状态
+    void setItemSelectStatus(int position);
 }
