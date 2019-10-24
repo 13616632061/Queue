@@ -26,7 +26,7 @@ android {
         }
     }
     greendao {
-        schemaVersion 4//数据库版本号
+        schemaVersion 7//数据库版本号
         daoPackage 'yzx.com.queue.greendao'//设置DaoMaster、DaoSession、Dao包名
         targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
 //        generateTests false //设置为true以自动生成单元测试。

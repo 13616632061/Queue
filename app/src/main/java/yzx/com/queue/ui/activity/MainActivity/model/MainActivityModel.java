@@ -28,7 +28,6 @@ public class MainActivityModel implements IMainActivityModelImp {
         OrderType orderType = new OrderType();
         orderType.setTypeName(context.getResources().getString(R.string.all));
         orderType.setMaxNum(-99);
-        orderType.setIsSelect(true);
         typeList.add(orderType);
         typeList.addAll(GreenDaoHelp.getDaoSession().getOrderTypeDao().queryBuilder().list());
         return typeList;
@@ -36,6 +35,7 @@ public class MainActivityModel implements IMainActivityModelImp {
 
     /**
      * 取号
+     *
      * @param orderInfo
      */
     @Override
@@ -45,10 +45,38 @@ public class MainActivityModel implements IMainActivityModelImp {
 
     /**
      * 获取排队订单信息
-     * @param personNum
+     *
+     * @param orderType
      */
     @Override
-    public void getQueueOrderInfo(int personNum) {
-        GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.PersonNum.eq(personNum));
+    public List<OrderInfo> getQueueOrderInfo(OrderType orderType) {
+        List<OrderInfo> list;
+        switch (orderType.getMaxNum()) {
+            case -99:
+                list = GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.Status.eq(0)).list();
+                break;
+            default:
+                list = GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.Status.eq(0),OrderInfoDao.Properties.PersonNum.le(orderType.getMaxNum()), OrderInfoDao.Properties.PersonNum.ge(orderType.getMinNum())).list();
+                break;
+        }
+        return list;
+    }
+
+    /**
+     * 获取历史排队订单信息
+     * @return
+     */
+    @Override
+    public List<OrderInfo> getHistoryQueueOrderInfo() {
+        return GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.Status.gt(0)).list();
+    }
+
+    /**
+     * 更新排队订单信息信息
+     * @param orderInfo
+     */
+    @Override
+    public void updateQueueOrderInfo(OrderInfo orderInfo) {
+        GreenDaoHelp.getDaoSession().getOrderInfoDao().update(orderInfo);
     }
 }

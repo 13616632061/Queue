@@ -26,7 +26,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:gravity="center"
-        android:text="历史"
-        android:textColor="@color/color_b8b8b8"
+        android:text="@string/history"
+        android:background="@color/white"
+        android:textColor="@color/color_707070"
         android:textSize="16sp" />
 </RelativeLayout>

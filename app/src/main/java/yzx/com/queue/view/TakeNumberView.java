@@ -252,6 +252,7 @@ public class TakeNumberView extends FrameLayout {
         }
         if (takeNumber != null) {
             takeNumber.takeNumber(strNum, strPhone);
+            initPhoneAndNum();
         }
     }
 

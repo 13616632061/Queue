@@ -18,15 +18,17 @@ public class OrderType {
     private Integer maxNum=0;
     private Boolean isSelect=false;
     private Integer orderNum=0;
-    @Generated(hash = 726084985)
+    private String number;
+    @Generated(hash = 1220704035)
     public OrderType(Long id, String typeName, Integer minNum, Integer maxNum,
-            Boolean isSelect, Integer orderNum) {
+            Boolean isSelect, Integer orderNum, String number) {
         this.id = id;
         this.typeName = typeName;
         this.minNum = minNum;
         this.maxNum = maxNum;
         this.isSelect = isSelect;
         this.orderNum = orderNum;
+        this.number = number;
     }
     @Generated(hash = 40568524)
     public OrderType() {
@@ -67,17 +69,11 @@ public class OrderType {
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
     }
-
-
-    @Override
-    public String toString() {
-        return "OrderType{" +
-                "id=" + id +
-                ", typeName='" + typeName + '\'' +
-                ", minNum=" + minNum +
-                ", maxNum=" + maxNum +
-                ", isSelect=" + isSelect +
-                ", orderNum=" + orderNum +
-                '}';
+    public String getNumber() {
+        return this.number;
     }
+    public void setNumber(String number) {
+        this.number = number;
+    }
+  
 }

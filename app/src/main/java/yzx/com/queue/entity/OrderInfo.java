@@ -15,13 +15,14 @@ public class OrderInfo {
     private Long id;
     private String number;
     private String phone;
-    private Integer personNum=0;
-    private Integer status=0;
+    private Integer personNum = 0;
+    private Integer status = 0;
     private String time;
-    private Boolean isHasMsg=false;
-    @Generated(hash = 65605595)
+    private Boolean isHasMsg = false;
+    private Integer callNum = 0;
+    @Generated(hash = 1654003287)
     public OrderInfo(Long id, String number, String phone, Integer personNum,
-            Integer status, String time, Boolean isHasMsg) {
+            Integer status, String time, Boolean isHasMsg, Integer callNum) {
         this.id = id;
         this.number = number;
         this.phone = phone;
@@ -29,6 +30,7 @@ public class OrderInfo {
         this.status = status;
         this.time = time;
         this.isHasMsg = isHasMsg;
+        this.callNum = callNum;
     }
     @Generated(hash = 1695813404)
     public OrderInfo() {
@@ -75,7 +77,14 @@ public class OrderInfo {
     public void setIsHasMsg(Boolean isHasMsg) {
         this.isHasMsg = isHasMsg;
     }
+    public Integer getCallNum() {
+        return this.callNum;
+    }
+    public void setCallNum(Integer callNum) {
+        this.callNum = callNum;
+    }
 
+    
 
 
 }

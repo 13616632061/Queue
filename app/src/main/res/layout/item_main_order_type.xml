@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
     android:layout_width="155dp"
     android:layout_height="48dp">
 
@@ -20,10 +21,8 @@
         android:layout_toRightOf="@+id/tv_name"
         android:background="@drawable/bg_red_cicle"
         android:gravity="center"
-        android:paddingBottom="2dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:paddingTop="2dp"
         android:text="99"
         android:textColor="@color/white"
         android:textSize="12sp" />

@@ -20,5 +20,11 @@ public interface IMainActivityModelImp {
     void doTakeNumber(OrderInfo orderInfo);
 
     //获取排队订单信息
-    void getQueueOrderInfo(int personNum);
+    List<OrderInfo> getQueueOrderInfo(OrderType orderType);
+
+    //获取历史排队订单信息
+    List<OrderInfo> getHistoryQueueOrderInfo();
+
+    //更新排队订单信息信息
+    void updateQueueOrderInfo(OrderInfo orderInfo);
 }

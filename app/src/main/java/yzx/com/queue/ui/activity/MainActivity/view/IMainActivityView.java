@@ -1,12 +1,16 @@
 package yzx.com.queue.ui.activity.MainActivity.view;
 
 import yzx.com.queue.ui.adapter.MainOrderTypeAdapter;
+import yzx.com.queue.ui.adapter.QueueOrderInfoAdapter;
 
 /**
  * Created by Administrator on 2019/10/21.
  */
 
 public interface IMainActivityView {
+
+    //设置历史视图颜色
+    void setHistoryViewColor(int type);
 
     //显示主菜单
     void showMainMenuPopWindow();
@@ -19,4 +23,7 @@ public interface IMainActivityView {
 
     //显示提示信息
     void showMsg(int type);
+
+    //初始化排队订单
+    QueueOrderInfoAdapter initQueueOrderInfoAdapter();
 }

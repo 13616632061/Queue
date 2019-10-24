@@ -30,6 +30,7 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         public final static Property MaxNum = new Property(3, Integer.class, "maxNum", false, "MAX_NUM");
         public final static Property IsSelect = new Property(4, Boolean.class, "isSelect", false, "IS_SELECT");
         public final static Property OrderNum = new Property(5, Integer.class, "orderNum", false, "ORDER_NUM");
+        public final static Property Number = new Property(6, String.class, "number", false, "NUMBER");
     }
 
 
@@ -50,7 +51,8 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
                 "\"MIN_NUM\" INTEGER," + // 2: minNum
                 "\"MAX_NUM\" INTEGER," + // 3: maxNum
                 "\"IS_SELECT\" INTEGER," + // 4: isSelect
-                "\"ORDER_NUM\" INTEGER);"); // 5: orderNum
+                "\"ORDER_NUM\" INTEGER," + // 5: orderNum
+                "\"NUMBER\" TEXT);"); // 6: number
     }
 
     /** Drops the underlying database table. */
@@ -92,6 +94,11 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         if (orderNum != null) {
             stmt.bindLong(6, orderNum);
         }
+ 
+        String number = entity.getNumber();
+        if (number != null) {
+            stmt.bindString(7, number);
+        }
     }
 
     @Override
@@ -127,6 +134,11 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         if (orderNum != null) {
             stmt.bindLong(6, orderNum);
         }
+ 
+        String number = entity.getNumber();
+        if (number != null) {
+            stmt.bindString(7, number);
+        }
     }
 
     @Override
@@ -142,7 +154,8 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // minNum
             cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // maxNum
             cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0, // isSelect
-            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5) // orderNum
+            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // orderNum
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // number
         );
         return entity;
     }
@@ -155,6 +168,7 @@ public class OrderTypeDao extends AbstractDao<OrderType, Long> {
         entity.setMaxNum(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
         entity.setIsSelect(cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0);
         entity.setOrderNum(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
+        entity.setNumber(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
      }
     
     @Override
