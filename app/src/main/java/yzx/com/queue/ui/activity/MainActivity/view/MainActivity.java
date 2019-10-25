@@ -139,9 +139,25 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     @Override
     public void doTakeNumber() {
         takeNumber.setTakeNumber(new TakeNumberView.takeNumber() {
+            //取号
             @Override
             public void takeNumber(String num, String phone) {
                 mPresenter.doTakeNumber(num, phone);
+            }
+            //查询
+            @Override
+            public void searchQueueInfo(String num, String phone) {
+                mPresenter.searchQueueInfo(num,phone);
+            }
+            //播放
+            @Override
+            public void play() {
+                mPresenter.play();
+            }
+
+            @Override
+            public void onPause() {
+                mPresenter.onPause();
             }
         });
     }
@@ -157,6 +173,9 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
                 break;
             case 2://请选择要删除的分类
                 Toast.makeText(this, getResources().getString(R.string.please_select_delete_type), Toast.LENGTH_SHORT).show();
+                break;
+            case 3://请设置播放内容
+                Toast.makeText(this, getResources().getString(R.string.please_set_paly_content), Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -193,6 +212,25 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
             }
         });
         return adapter;
+    }
+
+    /**
+     * 播放状态
+     * @return
+     */
+    @Override
+    public boolean playStatus() {
+        return takeNumber.playStatus();
+    }
+
+    /**
+     * 设置空视图
+     * @return
+     */
+    @Override
+    public View setEmptyView() {
+        View view=View.inflate(this,R.layout.layout_empty,null);
+        return view;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

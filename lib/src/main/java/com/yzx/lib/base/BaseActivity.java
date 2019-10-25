@@ -62,9 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnS
         //路由自动属性注入
         ARouter.getInstance().inject(this);
         fragmentManager = getSupportFragmentManager();
-//        synchronized (mActivities) {
-//            mActivities.add(this);
-//        }
+
         mHandler = new Handler();
         initView();
         initListener();

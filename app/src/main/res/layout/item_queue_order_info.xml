@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_gray_shadow"
-    android:layout_height="132dp">
+    android:layout_height="132dp"
+    android:background="@drawable/bg_gray_shadow">
 
-    <TextView
-        android:id="@+id/tv_num"
-        android:layout_width="140dp"
-        android:layout_height="130dp"
-        android:background="@color/color_F8F6F5"
-        android:gravity="center"
-        android:text="A1"
-        android:textColor="@color/color_FF4500"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+    <RelativeLayout
+        android:id="@+id/layout_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="140dp"
+            android:layout_height="130dp"
+            android:background="@color/color_F8F6F5"
+            android:gravity="center"
+            android:text="A1"
+            android:textColor="@color/color_FF4500"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_green_right_top_radius"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:visibility="gone"
+            android:textColor="@color/color_FF4500"
+            android:textSize="18sp" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_phone"
@@ -21,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@+id/tv_num"
+        android:layout_toRightOf="@+id/layout_num"
         android:text="@string/no_phone_num"
         android:textColor="@color/color_000000"
         android:textSize="18sp" />
@@ -32,9 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:visibility="gone"
         android:layout_toRightOf="@+id/tv_phone"
-        android:src="@mipmap/icon_short_msg" />
+        android:src="@mipmap/icon_short_msg"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,39 +79,42 @@
             android:textColor="@color/color_707070"
             android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_call_number"
-        android:paddingRight="25dp"
-        android:paddingLeft="25dp"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toLeftOf="@+id/layout_eat"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_blue_circle"
                 android:padding="10dp"
                 android:src="@mipmap/icon_call" />
+
             <TextView
-                android:layout_marginLeft="25dp"
                 android:id="@+id/tv_call_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_red_cicle"
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="99"
-                android:visibility="invisible"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <TextView
@@ -102,15 +125,16 @@
             android:textColor="@color/color_000000"
             android:textSize="16sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_eat"
-        android:paddingRight="25dp"
-        android:paddingLeft="25dp"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toLeftOf="@+id/layout_over_number"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -127,15 +151,16 @@
             android:textColor="@color/color_000000"
             android:textSize="16sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_over_number"
-        android:paddingRight="25dp"
-        android:paddingLeft="25dp"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toLeftOf="@+id/iv_more"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
 
         <ImageView
             android:layout_width="wrap_content"

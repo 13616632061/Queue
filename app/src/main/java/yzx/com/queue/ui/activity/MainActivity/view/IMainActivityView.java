@@ -1,5 +1,7 @@
 package yzx.com.queue.ui.activity.MainActivity.view;
 
+import android.view.View;
+
 import yzx.com.queue.ui.adapter.MainOrderTypeAdapter;
 import yzx.com.queue.ui.adapter.QueueOrderInfoAdapter;
 
@@ -26,4 +28,10 @@ public interface IMainActivityView {
 
     //初始化排队订单
     QueueOrderInfoAdapter initQueueOrderInfoAdapter();
+
+    //播放状态
+    boolean playStatus();
+
+    //设置空视图
+    View setEmptyView();
 }

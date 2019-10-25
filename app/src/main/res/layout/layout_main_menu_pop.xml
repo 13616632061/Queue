@@ -24,4 +24,23 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@color/color_000000"></View>
+    <TextView
+        android:background="@color/white"
+        android:id="@+id/tv_set"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:drawableLeft="@mipmap/menu_type"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="@string/set"
+        android:textColor="@color/color_000000"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/color_000000"></View>
 </LinearLayout>

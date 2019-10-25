@@ -8,5 +8,6 @@ public class RouteMap {
 
     public static final String ROUTE_MAIN_ACTIVITY = "/app/MainActivity";
     public static final String ROUTE_ORDER_TYPE_ACTIVITY = "/app/OrderTypeAvtivity";
+    public static final String ROUTE_SET_ACTIVITY = "/app/SetActivity";
 
 }

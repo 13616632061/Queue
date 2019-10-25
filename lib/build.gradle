@@ -77,6 +77,7 @@ dependencies {
     api rootProject.ext.dependencies["eventbus"]
     api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["FilePicker"]
+    api rootProject.ext.dependencies["Text2Speach"]
 
 
 

@@ -27,4 +27,10 @@ public interface IMainActivityModelImp {
 
     //更新排队订单信息信息
     void updateQueueOrderInfo(OrderInfo orderInfo);
+
+    //获取当前分类所有订单信息
+    List<OrderInfo> getCurTypeALLQueueOrderInfo(OrderType orderType);
+
+    //根据就餐人数查询
+    List<OrderInfo> searchQueueInfo(String num,String phone);
 }

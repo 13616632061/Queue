@@ -33,4 +33,13 @@
     <string name="no_phone_num">无手机号</string>
     <string name="person">人</string>
     <string name="history">历史</string>
+    <string name="set">操作设置</string>
+    <string name="clear_order_info">1.清空排队信息</string>
+    <string name="friends_msg">温馨提示</string>
+    <string name="handle_success">操作成功</string>
+    <string name="if_clear_order_info">是否清空取号排队订单信息？</string>
+    <string name="save">保存</string>
+    <string name="save_success">保存成功</string>
+    <string name="please_set_paly_content">请设置播放内容</string>
+    <string name="onpause">暂停</string>
 </resources>

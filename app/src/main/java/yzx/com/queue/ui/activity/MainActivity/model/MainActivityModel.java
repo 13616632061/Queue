@@ -1,6 +1,7 @@
 package yzx.com.queue.ui.activity.MainActivity.model;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,5 +79,35 @@ public class MainActivityModel implements IMainActivityModelImp {
     @Override
     public void updateQueueOrderInfo(OrderInfo orderInfo) {
         GreenDaoHelp.getDaoSession().getOrderInfoDao().update(orderInfo);
+    }
+
+    /**
+     * 获取当前分类所有订单信息
+     * @param orderType
+     * @return
+     */
+    @Override
+    public List<OrderInfo> getCurTypeALLQueueOrderInfo(OrderType orderType) {
+        List<OrderInfo> list = GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.PersonNum.le(orderType.getMaxNum()), OrderInfoDao.Properties.PersonNum.ge(orderType.getMinNum())).list();
+        return list;
+    }
+
+    /**
+     * 根据就餐人数查询
+     * @param num
+     * @param phone
+     * @return
+     */
+    @Override
+    public List<OrderInfo> searchQueueInfo(String num, String phone) {
+        List<OrderInfo> list=null;
+        if (!TextUtils.isEmpty(num)&&!TextUtils.isEmpty(phone)){
+            list = GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().whereOr(OrderInfoDao.Properties.PersonNum.eq(num),OrderInfoDao.Properties.Phone.like(phone)).list();
+        }else if (!TextUtils.isEmpty(num)&&TextUtils.isEmpty(phone)){
+            list = GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.PersonNum.eq(num)).list();
+        }else if (TextUtils.isEmpty(num)&&!TextUtils.isEmpty(phone)){
+            list = GreenDaoHelp.getDaoSession().getOrderInfoDao().queryBuilder().where(OrderInfoDao.Properties.Phone.like("%"+phone+"%")).list();
+        }
+        return list;
     }
 }

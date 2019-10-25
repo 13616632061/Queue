@@ -30,8 +30,8 @@ public interface IMainActivityPresenterImp {
     //取号
     void doTakeNumber(String num, String phone);
 
-    //设置排队订单序号
-    void setQueueOrderNumber();
+    //设置排队订单属于哪个分类
+    OrderType getQueueOrderType(int personNum);
 
     //初始化排队订单
     void initQueueOrderInfoAdapter();
@@ -54,5 +54,16 @@ public interface IMainActivityPresenterImp {
     //获取历史排队订单信息
     void getHistoryQueueOrderInfo();
 
+    //查询排队信息
+    void searchQueueInfo(String num, String phone);
+
+    //设置空视图
+    void setEmptyView();
+
+    //播放
+    void play();
+
+    //暂停
+    void onPause();
 
 }

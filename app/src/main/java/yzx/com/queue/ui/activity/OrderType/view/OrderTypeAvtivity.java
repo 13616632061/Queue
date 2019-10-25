@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.squareup.haha.perflib.Main;
 import com.yzx.lib.base.BaseActivity;
 import com.yzx.lib.entity.MessageEvent;
 
@@ -19,7 +18,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.Map;
 
 import butterknife.InjectView;
 import butterknife.OnClick;

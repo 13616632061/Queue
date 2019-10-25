@@ -80,10 +80,28 @@ public class QueueOrderInfoAdapter extends BaseQuickAdapter<OrderInfo, BaseViewH
         if (item.getIsHasMsg()) {
             helper.setGone(R.id.iv_msg, true);
         }
+        //订单状态
+        switch (item.getStatus()) {
+            case 0://排队
+                helper.setGone(R.id.tv_status, false);
+                break;
+            case 1://就餐
+                helper.setGone(R.id.tv_status, true);
+                helper.setText(R.id.tv_status, mContext.getResources().getString(R.string.eat));
+                helper.setBackgroundRes(R.id.tv_status, R.drawable.bg_green_right_top_radius);
+                break;
+            case 2://过号
+                helper.setGone(R.id.tv_status, true);
+                helper.setText(R.id.tv_status, mContext.getResources().getString(R.string.over_number));
+                helper.setBackgroundRes(R.id.tv_status, R.drawable.bg_yellow_right_top_radius);
+                break;
+        }
         //呼叫次数
         if (item.getCallNum() > 0) {
-            helper.setVisible(R.id.tv_call_num, true);
-            helper.setText(R.id.tv_call_num, item.getCallNum()+"");
+            helper.setGone(R.id.tv_call_num, true);
+            helper.setText(R.id.tv_call_num, item.getCallNum() + "");
+        } else {
+            helper.setGone(R.id.tv_call_num, false);
         }
         //就餐人数
         helper.setText(R.id.tv_person_num, item.getPersonNum() + mContext.getResources().getString(R.string.person));
@@ -97,11 +115,9 @@ public class QueueOrderInfoAdapter extends BaseQuickAdapter<OrderInfo, BaseViewH
             datelist.add(tvTime);
         }
 
-        if (item.getStatus()==0){
-            helper.addOnClickListener(R.id.layout_call_number);
-            helper.addOnClickListener(R.id.layout_eat);
-            helper.addOnClickListener(R.id.layout_over_number);
-        }
+        helper.addOnClickListener(R.id.layout_call_number);
+        helper.addOnClickListener(R.id.layout_eat);
+        helper.addOnClickListener(R.id.layout_over_number);
         helper.addOnClickListener(R.id.iv_more);
     }
 }

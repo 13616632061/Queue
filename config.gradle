@@ -69,6 +69,8 @@ ext {
             "FilePicker"                   : 'com.leon:lfilepickerlibrary:1.8.0',
             //excel文件导入导出
             "excel"                        : 'com.sargeraswang.util.excel-util:1.2.4',
+            //语音播放
+            "Text2Speach"                  : 'com.github.wulee510505:Text2Speach:1.0.0',
 
 
     ]

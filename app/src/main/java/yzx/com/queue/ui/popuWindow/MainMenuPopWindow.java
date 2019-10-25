@@ -51,11 +51,15 @@ public class MainMenuPopWindow extends BasePopupWindow {
         this.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
-    @OnClick({R.id.tv_type})
+    @OnClick({R.id.tv_type, R.id.tv_set})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_type://分类管理
                 ARouter.getInstance().build(RouteMap.ROUTE_ORDER_TYPE_ACTIVITY).navigation();
+                exit();
+                break;
+            case R.id.tv_set:
+                ARouter.getInstance().build(RouteMap.ROUTE_SET_ACTIVITY).navigation();
                 exit();
                 break;
         }

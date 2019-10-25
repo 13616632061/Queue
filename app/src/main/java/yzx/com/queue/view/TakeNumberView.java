@@ -1,5 +1,6 @@
 package yzx.com.queue.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -16,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.RegexUtils;
-import com.blankj.utilcode.util.ToastUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -75,7 +75,7 @@ public class TakeNumberView extends FrameLayout {
     private View view;
     private int mPosition = 1;//输入手机号：0，输入就餐人数：1
     private takeNumber takeNumber;
-
+    private boolean isPaly = false;
 
 
     public TakeNumberView(@NonNull Context context) {
@@ -93,7 +93,7 @@ public class TakeNumberView extends FrameLayout {
         initView(context);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("NewApi")
     public TakeNumberView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initView(context);
@@ -190,18 +190,21 @@ public class TakeNumberView extends FrameLayout {
     /**
      * 初始化就餐人数和手机号
      */
-    public void initPhoneAndNum(){
+    public void initPhoneAndNum() {
         tvPhone.setText("");
         tvNum.setText("");
         selectPhoneOrNum(1);
     }
+
     @OnClick({R.id.tv_search, R.id.tv_paly, R.id.layout_phone, R.id.layout_num, R.id.one, R.id.two, R.id.three, R.id.four, R.id.five,
             R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.zero, R.id.clear, R.id.remove, R.id.btn_take_number})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search://查询
+                search();
                 break;
             case R.id.tv_paly://播放
+                paly();
                 break;
             case R.id.layout_phone://手机号
                 selectPhoneOrNum(0);
@@ -234,6 +237,47 @@ public class TakeNumberView extends FrameLayout {
     }
 
     /**
+     * 查询
+     */
+    private void search() {
+        String strPhone = tvPhone.getText().toString();
+        String strNum = tvNum.getText().toString();
+        if (TextUtils.isEmpty(strNum) && TextUtils.isEmpty(strPhone)) {
+            return;
+        }
+        if (takeNumber != null) {
+            takeNumber.searchQueueInfo(strNum, strPhone);
+            initPhoneAndNum();
+        }
+    }
+
+    /**
+     * 播放
+     */
+    private void paly() {
+        if (takeNumber != null) {
+            if (!isPaly) {
+                takeNumber.play();
+                isPaly = true;
+                tvPaly.setText(context.getResources().getString(R.string.onpause));
+            } else {
+                takeNumber.onPause();
+                isPaly = false;
+                tvPaly.setText(context.getResources().getString(R.string.play));
+            }
+        }
+    }
+
+    /**
+     * 播放状态
+     *
+     * @return
+     */
+    public boolean playStatus() {
+        return isPaly;
+    }
+
+    /**
      * 取号
      */
     private void takeNumber() {
@@ -241,12 +285,12 @@ public class TakeNumberView extends FrameLayout {
         String strNum = tvNum.getText().toString();
 
         if (TextUtils.isEmpty(strNum)) {
-            Toast.makeText(context,context.getResources().getString(R.string.empty_num),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.empty_num), Toast.LENGTH_SHORT).show();
             return;
         }
         if (!TextUtils.isEmpty(strPhone)) {
             if (!RegexUtils.isMobileExact(strPhone)) {
-                Toast.makeText(context,context.getResources().getString(R.string.error_phone),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, context.getResources().getString(R.string.error_phone), Toast.LENGTH_SHORT).show();
                 return;
             }
         }
@@ -258,12 +302,17 @@ public class TakeNumberView extends FrameLayout {
 
     public interface takeNumber {
         void takeNumber(String num, String phone);
+
+        void searchQueueInfo(String num, String phone);
+
+        void play();
+
+        void onPause();
     }
 
     public void setTakeNumber(takeNumber takeNumber) {
         this.takeNumber = takeNumber;
     }
-
 
 
 }
